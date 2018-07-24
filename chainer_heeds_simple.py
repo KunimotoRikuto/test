@@ -113,21 +113,6 @@ train, test = datasets.split_dataset_random(datasets.TupleDataset(X, Y), 623)
 train_iter = iterators.SerialIterator(train, batch_size=100, shuffle=True)
 test_iter = iterators.SerialIterator(test, batch_size=100, repeat=False, shuffle=False)
 
-"""
-class MLP(Chain):
-    def __init__(self):
-        super(MLP, self).__init__(
-            l1=L.Linear(n_input, n_l2),
-            l2=L.Linear(n_l2, n_l2),
-            l3=L.Linear(n_l2, n_out),
-        )
-
-    def __call__(self, x):
-        h1 = F.relu(self.l1(x))
-        h2 = F.relu(self.l2(h1))
-        y = self.l3(h2)
-        return y
-"""
 exec(program_description)
 
 model = L.Classifier(MLP())

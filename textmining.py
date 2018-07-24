@@ -98,11 +98,21 @@ for line in tfidf_matrix:
 
 print("end")
 
-
-
-"""
-print(copus)
-copus = numpy.array(copus)
-# print(copus)
-print(len(copus))
-"""
+def split_into_words(doc):
+    """
+    名詞だけを取り出してリストで戻す関数
+    """
+    try:
+        t = Tokenizer(mmap=True)
+        word_list = []
+        # 形態素して取り出す
+        for token in t.tokenize(doc):
+            # 品詞の判定をして、名詞か動詞か形容詞だけを取り出す
+            if (token.part_of_speech.split(",")[0] in ("名詞","動詞","形容詞")
+                and  token.part_of_speech.split(",")[1] != "数"):  # ただし、数詞は使っても意味が薄いので捨てる
+                # 表層形を登録する
+                word_list.append(token.surface)
+        return word_list
+    except Exception as ex:
+        print(ex)
+        return []
