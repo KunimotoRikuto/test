@@ -11,7 +11,7 @@ fn = "data1_his.csv"
 
 ep = 0
 ff = True
-list = []
+#list = []
 while ep < 9:
     print(str(ep)+"th starting")
     """

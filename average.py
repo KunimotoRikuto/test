@@ -19,3 +19,4 @@ for line in os.listdir(path):
 
 print(sum(listave)/len(listave))
 print("unko")
+print("ひゃく")
